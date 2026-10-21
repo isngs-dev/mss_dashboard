@@ -27,7 +27,7 @@ function longDate(isoDate: string): string {
 // Recharts renders these as inline SVG/DOM styles, so Tailwind classes don't
 // apply here. We reference the CSS custom properties directly via hsl(var(...))
 // so the chart chrome (grid, axes, tooltip) follows light/dark mode just like
-// the rest of the UI. Only chart data colors (e.g. the primary orange fill)
+// the rest of the UI. Only chart data colors (e.g. the primary green fill)
 // stay as fixed brand hex values.
 const TOOLTIP_STYLE = {
   borderRadius: 8,
@@ -69,8 +69,8 @@ export const TrendChart = memo(function TrendChart({
           <AreaChart data={data} margin={{ top: 8, right: 16, left: -16, bottom: 0 }}>
             <defs>
               <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ff682c" stopOpacity={0.18} />
-                <stop offset="95%" stopColor="#ff682c" stopOpacity={0} />
+                <stop offset="5%" stopColor="#16a34a" stopOpacity={0.18} />
+                <stop offset="95%" stopColor="#16a34a" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -106,11 +106,11 @@ export const TrendChart = memo(function TrendChart({
             <Area
               type="monotone"
               dataKey="count"
-              stroke="#ff682c"
+              stroke="#16a34a"
               strokeWidth={2}
               fill="url(#trendGradient)"
               dot={false}
-              activeDot={{ r: 4, fill: "#ff682c", stroke: "hsl(var(--card))", strokeWidth: 2 }}
+              activeDot={{ r: 4, fill: "#16a34a", stroke: "hsl(var(--card))", strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -142,8 +142,8 @@ export const CumulativeChart = memo(function CumulativeChart({
           <AreaChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
             <defs>
               <linearGradient id="cumulativeGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ff682c" stopOpacity={0.15} />
-                <stop offset="95%" stopColor="#ff682c" stopOpacity={0} />
+                <stop offset="5%" stopColor="#16a34a" stopOpacity={0.15} />
+                <stop offset="95%" stopColor="#16a34a" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -194,11 +194,11 @@ export const CumulativeChart = memo(function CumulativeChart({
             <Area
               type="monotone"
               dataKey="cumulative"
-              stroke="#ff682c"
+              stroke="#16a34a"
               strokeWidth={2}
               fill="url(#cumulativeGradient)"
               dot={false}
-              activeDot={{ r: 4, fill: "#ff682c", stroke: "hsl(var(--card))", strokeWidth: 2 }}
+              activeDot={{ r: 4, fill: "#16a34a", stroke: "hsl(var(--card))", strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -263,7 +263,7 @@ export const LocationBarChart = memo(function LocationBarChart({
             contentStyle={TOOLTIP_STYLE}
             formatter={(value: number) => [value, "Visits"]}
           />
-          <Bar dataKey="count" fill="#ff682c" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="count" fill="#16a34a" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

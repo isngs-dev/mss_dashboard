@@ -6,6 +6,12 @@ import { hexToHsl } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
+const DEMO_PASSWORD = "Demo123!";
+const DEMO_ACCOUNTS = [
+  { label: "Admin", email: "admin@demo.local" },
+  { label: "Client (Brasserie Labatt)", email: "client@demo.local" },
+];
+
 async function fetchPublicSetting(key: string, fallback: string): Promise<string> {
   try {
     const baseUrl = process.env.BACKEND_API_URL ?? "http://localhost:8010";
@@ -32,15 +38,18 @@ export default async function LoginPage({
   const params = await searchParams;
   const hasError = params.error === "invalid_credentials";
   const hasServiceError = params.error === "service_unavailable";
+  // Demo-only convenience (seeded accounts from scripts/seed_demo_users.py). Off unless
+  // explicitly enabled, so credentials are never shown on a real deployment.
+  const showDemoCredentials = process.env.SHOW_DEMO_CREDENTIALS === "true";
 
   const [logoText, footerText, brandColor] = await Promise.all([
     fetchPublicSetting("logo_text", "iSN"),
     fetchPublicSetting("footer_text", "iSN Dashboard"),
-    fetchPublicSetting("brand_color", "#ff682c"),
+    fetchPublicSetting("brand_color", "#16a34a"),
   ]);
 
   const brandOverride =
-    brandColor !== "#ff682c"
+    brandColor !== "#16a34a"
       ? `:root { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; } .dark { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; }`
       : null;
 
@@ -99,6 +108,24 @@ export default async function LoginPage({
           </div>
 
           <LoginForm initialError={hasError ? "error" : hasServiceError ? "service_error" : undefined} callbackUrl={params.callbackUrl} />
+
+          {showDemoCredentials && (
+            <div className="rounded-xl border border-dashed border-border bg-muted/30 p-4 text-sm">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Demo accounts
+              </p>
+              <dl className="space-y-3">
+                {DEMO_ACCOUNTS.map((a) => (
+                  <div key={a.email}>
+                    <dt className="font-medium text-foreground">{a.label}</dt>
+                    <dd className="font-mono text-muted-foreground">
+                      {a.email} <span className="px-1">/</span> {DEMO_PASSWORD}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import {
 import { Info } from "lucide-react";
 
 const COLORS = [
-  "#ff682c",
+  "#16a34a",
   "#e8e8e8",
   "#828282",
   "#d4d4d4",

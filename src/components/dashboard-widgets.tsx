@@ -46,7 +46,7 @@ function ProgressRing({ progress, size = 24 }: { progress: number; size?: number
         cy={size / 2}
         r={r}
         fill="none"
-        stroke="#ff682c"
+        stroke="#16a34a"
         strokeWidth={2}
         strokeDasharray={circumference}
         strokeDashoffset={offset}
@@ -84,7 +84,7 @@ function KpiTile({
     <div className={cn("card-ventriloc p-2 flex flex-col justify-between gap-0.5", className)}>
       <div className="flex items-center justify-between text-[9px] uppercase tracking-wide text-muted-foreground">
         <span>{label}</span>
-        <span className="text-signal-orange">{icon}</span>
+        <span className="text-signal-green">{icon}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <div className={cn(
@@ -299,7 +299,7 @@ export function TopLocationsWidget({ data, projectId, className }: WidgetProps) 
 
   return (
     <div
-      className={cn(className, "card-ventriloc flex flex-col p-2.5 min-h-0 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff682c]/30")}
+      className={cn(className, "card-ventriloc flex flex-col p-2.5 min-h-0 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#16a34a]/30")}
       onClick={() => router.push(`/dashboard/projects/${projectId}/locations`)}
       role="button"
       tabIndex={0}
@@ -307,7 +307,7 @@ export function TopLocationsWidget({ data, projectId, className }: WidgetProps) 
     >
       <div className="flex items-center justify-between shrink-0">
         <span className="text-[11px] font-medium text-muted-foreground">Top Locations</span>
-        <span className="text-[10px] text-[#ff682c]">View map →</span>
+        <span className="text-[10px] text-[#16a34a]">View map →</span>
       </div>
       <div className="flex-1 min-h-0 mt-2 flex flex-col justify-center gap-1.5">
         {locationData.map((d) => (
@@ -315,7 +315,7 @@ export function TopLocationsWidget({ data, projectId, className }: WidgetProps) 
             <span className="text-[11px] text-foreground w-24 truncate">{d.city}</span>
             <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
               <div
-                className="h-full rounded-full bg-[#ff682c]"
+                className="h-full rounded-full bg-[#16a34a]"
                 style={{ width: `${(d.count / maxCityCount) * 100}%` }}
               />
             </div>
@@ -408,7 +408,7 @@ export function MetricsBarListWidget({ data, params, className }: WidgetProps) {
             <span className="text-[11px] text-foreground w-24 truncate">{m.label}</span>
             <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
               <div
-                className="h-full rounded-full bg-[#ff682c]"
+                className="h-full rounded-full bg-[#16a34a]"
                 style={{ width: `${(m.value / maxValue) * 100}%` }}
               />
             </div>
@@ -567,7 +567,7 @@ export function VisitsHeatmapCalendarWidget({ data, className }: WidgetProps) {
               className="h-3 w-3 rounded-sm"
               style={{
                 background: intensity > 0
-                  ? `rgba(255, 104, 44, ${0.15 + intensity * 0.85})`
+                  ? `rgba(22, 163, 74, ${0.15 + intensity * 0.85})`
                   : "hsl(var(--muted))",
               }}
             />
@@ -588,7 +588,7 @@ export function VisitsSummaryBandWidget({ data, className }: WidgetProps) {
   return (
     <div className={cn(className, "card-ventriloc flex items-center justify-between gap-4 px-3 py-2")}>
       <div className="flex items-center gap-1.5">
-        <Store className="h-3.5 w-3.5 text-signal-orange" />
+        <Store className="h-3.5 w-3.5 text-signal-green" />
         <span className="font-space-grotesk text-sm text-foreground tabular-nums">
           {totalVisits.toLocaleString()}
         </span>
@@ -601,7 +601,7 @@ export function VisitsSummaryBandWidget({ data, className }: WidgetProps) {
         <span className="text-[10px] text-muted-foreground">stores</span>
       </div>
       <div className="flex items-center gap-1.5">
-        <Calendar className="h-3.5 w-3.5 text-signal-orange" />
+        <Calendar className="h-3.5 w-3.5 text-signal-green" />
         <span className="text-[10px] text-muted-foreground">
           {minDate && maxDate ? `${fmtShort(minDate)} – ${fmtShort(maxDate)}` : "—"}
         </span>

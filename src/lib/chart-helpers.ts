@@ -40,7 +40,7 @@ const PHOTO_SLOT_LABELS: Record<string, string> = {
 
 const FUNNEL_COLORS = [
   "#4a90d9", "#5a95d4", "#6a9acf", "#7a9fca", "#8aa4c5",
-  "#9aa9c0", "#b09070", "#c07850", "#e06030", "#ff682c",
+  "#8fb0a0", "#70b080", "#4caf62", "#2fa854", "#16a34a",
 ];
 
 export function buildFunnelData(
@@ -130,11 +130,11 @@ export function buildRadarData(
 }
 
 export const BAR_GRADIENT_LIGHT = [
-  "#d94f1e", "#df5722", "#e56026", "#eb682a", "#f0702e",
-  "#f57832", "#fa8036", "#ff883a", "#ffa06e", "#ffc3a3",
+  "#15803d", "#16883f", "#169043", "#16a34a", "#22ad52",
+  "#34b862", "#4ac274", "#6dcf8e", "#9ce0b4", "#c6efd5",
 ];
 
 export const BAR_GRADIENT_DARK = [
-  "#ff8a5c", "#ff8254", "#ff7a4c", "#ff7244", "#ff6a3c",
-  "#ff6234", "#e0562c", "#c04a24", "#a03e1c", "#8a3b1c",
+  "#4ade80", "#3fd374", "#34c868", "#2abc5d", "#22b055",
+  "#1da34c", "#188f43", "#157a3a", "#126631", "#0f5329",
 ];

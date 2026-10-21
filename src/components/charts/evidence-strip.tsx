@@ -30,7 +30,7 @@ export const EvidenceStrip = memo(function EvidenceStrip({
   return (
     <div className="card-ventriloc flex items-center gap-3 px-4 py-2.5 shrink-0">
       <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground shrink-0">
-        <Camera className="h-3.5 w-3.5 text-[#ff682c]" />
+        <Camera className="h-3.5 w-3.5 text-[#16a34a]" />
         <span className="font-medium text-foreground">Photo Evidence</span>
       </div>
       <div className="flex items-center gap-2 flex-1 overflow-x-auto">
@@ -43,7 +43,7 @@ export const EvidenceStrip = memo(function EvidenceStrip({
               <div className="flex flex-col items-center gap-0.5">
                 <div className="w-3 bg-muted rounded-sm overflow-hidden" style={{ height: 28 }}>
                   <div
-                    className="w-full bg-[#ff682c] rounded-sm mt-auto"
+                    className="w-full bg-[#16a34a] rounded-sm mt-auto"
                     style={{ height: barH, marginTop: 28 - barH }}
                   />
                 </div>

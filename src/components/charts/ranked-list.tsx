@@ -34,7 +34,7 @@ export const RankedLocationList = memo(function RankedLocationList({
             </div>
             <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full rounded-full bg-[#ff682c] transition-all duration-500"
+                className="h-full rounded-full bg-[#16a34a] transition-all duration-500"
                 style={{ width: `${(d.count / maxCount) * 100}%` }}
               />
             </div>

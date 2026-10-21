@@ -58,7 +58,7 @@ function SettingField({
               value={current}
               onChange={(e) => setCurrent(e.target.value)}
               className="max-w-[120px] font-mono text-sm"
-              placeholder="#ff682c"
+              placeholder="#16a34a"
             />
           </div>
         ) : type === "select" && options ? (
@@ -152,7 +152,7 @@ export function SettingsClient({ settings, userRole }: SettingsClientProps) {
         <SettingField
           label="Brand Color"
           settingKey="brand_color"
-          value={settings.brand_color ?? "#ff682c"}
+          value={settings.brand_color ?? "#16a34a"}
           type="color"
           description="Accent color used for buttons, links, and highlights."
         />

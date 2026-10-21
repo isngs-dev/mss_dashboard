@@ -155,7 +155,7 @@ class PostgresDashboardRepository:
             id=str(row["user_id"]),
             email=str(row["email"]),
             name=row.get("name"),
-            role=Role(str(row["role"])),
+            role=resolve_role(str(row["role"])),
             tenant_id=row.get("tenant_id"),
             hashed_password=row["hashed_password"],
             project_ids=tuple(row.get("project_ids") or []),

@@ -511,7 +511,7 @@ class InMemoryDashboardRepository:
         "site_title": "iSN",
         "logo_text": "iSN",
         "footer_text": "iSN Dashboard",
-        "brand_color": "#ff682c",
+        "brand_color": "#16a34a",
         "default_theme": "system",
         "date_format": "MM/DD/YYYY",
         "support_email": "",

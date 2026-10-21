@@ -57,7 +57,7 @@ export function LoginForm({
             : "Invalid credentials."}
         </div>
       )}
-      <Button className="w-full bg-[#ff682c] text-white hover:bg-[#ff682c]/90" disabled={isPending}>
+      <Button className="w-full bg-[#16a34a] text-white hover:bg-[#16a34a]/90" disabled={isPending}>
         {isPending ? "Signing in…" : "Sign in"}
       </Button>
       <p className="text-center text-sm text-muted-foreground">

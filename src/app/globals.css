@@ -4,34 +4,34 @@
 
 @layer base {
   :root {
-    /* Swiss Executive — Fog canvas / Paper cards / Signal Orange accent */
-    --background:          0 0% 96%;   /* Fog     #f5f5f5 */
-    --foreground:          0 0% 13%;   /* Carbon  #202020 */
+    /* Swiss Executive — Fog canvas / Paper cards / Signal Green accent */
+    --background:          140 12% 96%;   /* Fog     #f5f5f5 */
+    --foreground:          150 15% 12%;   /* Carbon  #202020 */
     --card:                0 0% 100%;  /* Paper   #ffffff */
-    --card-foreground:     0 0% 13%;
+    --card-foreground:     150 15% 12%;
     --popover:             0 0% 100%;
-    --popover-foreground:  0 0% 13%;
-    --primary:             16 100% 59%; /* Signal Orange #ff682c */
+    --popover-foreground:  150 15% 12%;
+    --primary:             142 76% 36%; /* Signal Green #16a34a */
     --primary-foreground:  0 0% 100%;
-    --secondary:           0 0% 96%;   /* Fog     #f5f5f5 */
-    --secondary-foreground:0 0% 30%;   /* Graphite #4d4d4d */
-    --muted:               0 0% 96%;   /* Fog */
-    --muted-foreground:    0 0% 51%;   /* Slate   #828282 */
-    --accent:              0 0% 91%;   /* Chalk   #e8e8e8 */
-    --accent-foreground:   0 0% 30%;   /* Graphite */
+    --secondary:           140 12% 96%;   /* Fog     #f5f5f5 */
+    --secondary-foreground:150 8% 30%;   /* Graphite #4d4d4d */
+    --muted:               140 12% 96%;   /* Fog */
+    --muted-foreground:    150 5% 42%;   /* Slate   #828282 */
+    --accent:              140 12% 91%;   /* Chalk   #e8e8e8 */
+    --accent-foreground:   150 8% 30%;   /* Graphite */
     --destructive:         0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border:              0 0% 91%;   /* Chalk   #e8e8e8 */
-    --input:               0 0% 91%;
-    --ring:                16 100% 59%; /* Signal Orange #ff682c */
+    --border:              140 10% 89%;   /* Chalk   #e8e8e8 */
+    --input:               140 10% 89%;
+    --ring:                142 76% 36%; /* Signal Green #16a34a */
     --radius:              0.5rem;      /* 8px cards */
-    --brand:               16 100% 59%; /* Signal Orange #ff682c */
+    --brand:               142 76% 36%; /* Signal Green #16a34a */
     --brand-foreground:    0 0% 100%;
 
     /* Swiss Executive — new tokens */
-    --sidebar-bg:          0 0% 98%;   /* #fafafa */
-    --sidebar-hover:       0 0% 94%;   /* #f0f0f0 */
-    --sidebar-active:      16 100% 59% / 0.08; /* Signal Orange at 8% */
+    --sidebar-bg:          140 15% 98%;   /* #fafafa */
+    --sidebar-hover:       140 12% 94%;   /* #f0f0f0 */
+    --sidebar-active:      142 76% 36% / 0.08; /* Signal Green at 8% */
     --success:             142 71% 45%; /* #22c55e */
     --success-foreground:  0 0% 100%;
     --warning:             38 92% 50%;  /* #f59e0b */
@@ -43,32 +43,32 @@
   }
 
   .dark {
-    --background:          0 0% 7%;    /* #121212 */
-    --foreground:          0 0% 91%;   /* #e8e8e8 Chalk */
-    --card:                0 0% 10%;   /* #1a1a1a */
-    --card-foreground:     0 0% 91%;
-    --popover:             0 0% 10%;
-    --popover-foreground:  0 0% 91%;
-    --primary:             20 100% 63%; /* #ff7a45 warm orange */
+    --background:          150 12% 7%;    /* #121212 */
+    --foreground:          140 10% 91%;   /* #e8e8e8 Chalk */
+    --card:                150 10% 10%;   /* #1a1a1a */
+    --card-foreground:     140 10% 91%;
+    --popover:             150 10% 10%;
+    --popover-foreground:  140 10% 91%;
+    --primary:             142 70% 38%; /* #1fa84e green */
     --primary-foreground:  0 0% 100%;
-    --secondary:           0 0% 12%;   /* #1f1f1f */
-    --secondary-foreground:0 0% 63%;
-    --muted:               0 0% 12%;
-    --muted-foreground:    0 0% 63%;   /* #a0a0a0 */
-    --accent:              0 0% 18%;   /* #2d2d2d */
-    --accent-foreground:   0 0% 63%;
+    --secondary:           150 10% 12%;   /* #1f1f1f */
+    --secondary-foreground:140 6% 63%;
+    --muted:               150 10% 12%;
+    --muted-foreground:    140 6% 63%;   /* #a0a0a0 */
+    --accent:              150 8% 18%;   /* #2d2d2d */
+    --accent-foreground:   140 6% 63%;
     --destructive:         0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border:              0 0% 18%;   /* #2d2d2d */
-    --input:               0 0% 18%;
-    --ring:                20 100% 63%; /* warm orange */
+    --border:              150 8% 18%;   /* #2d2d2d */
+    --input:               150 8% 18%;
+    --ring:                142 70% 38%; /* green */
     --radius:              0.5rem;
-    --brand:               20 100% 63%;
+    --brand:               142 70% 38%;
     --brand-foreground:    0 0% 100%;
 
-    --sidebar-bg:          0 0% 9%;    /* #161616 */
-    --sidebar-hover:       0 0% 12%;   /* #1f1f1f */
-    --sidebar-active:      20 100% 63% / 0.12;
+    --sidebar-bg:          150 12% 9%;    /* #161616 */
+    --sidebar-hover:       150 10% 12%;   /* #1f1f1f */
+    --sidebar-active:      142 70% 38% / 0.12;
     --success:             142 69% 58%; /* #4ade80 */
     --success-foreground:  0 0% 7%;
     --warning:             45 93% 47%;  /* #fbbf24 */
@@ -152,12 +152,12 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  /* Blob A — Signal Orange, top-left corner */
-  /* Blob B — warm amber tint, bottom-right corner */
+  /* Blob A — Signal Green, top-left corner */
+  /* Blob B — teal-green tint, bottom-right corner */
   /* Blob C — cool soft slate, top-right area */
   background:
-    radial-gradient(ellipse 70% 55% at 0% 0%,   hsl(16 100% 59% / 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(28 80% 60% / 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 55% at 0% 0%,   hsl(142 76% 36% / 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(160 60% 45% / 0.06) 0%, transparent 70%),
     radial-gradient(ellipse 55% 50% at 95% 5%,   hsl(210 20% 70% / 0.05) 0%, transparent 65%);
   animation:
     aurora-drift-a 32s ease-in-out infinite alternate,
@@ -173,8 +173,8 @@ body::before {
 
 .dark body::before {
   background:
-    radial-gradient(ellipse 70% 55% at 0% 0%, hsl(20 100% 63% / 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(28 80% 60% / 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 70% 55% at 0% 0%, hsl(142 70% 38% / 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(160 60% 45% / 0.03) 0%, transparent 70%);
   animation: none;
 }
 

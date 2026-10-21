@@ -26,7 +26,7 @@ export function PillNav({ items }: { items: PillNavItem[] }) {
             className={cn(
               "rounded-md px-3 py-1 text-xs font-medium transition-colors",
               active
-                ? "bg-card text-foreground shadow-sm border-b-2 border-[#ff682c]"
+                ? "bg-card text-foreground shadow-sm border-b-2 border-[#16a34a]"
                 : "text-muted-foreground hover:text-foreground hover:bg-card/50"
             )}
           >

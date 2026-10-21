@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { DistributionPopover } from "@/components/charts/distribution-popover";
 
 const COLORS = [
-  "#ff682c",
+  "#16a34a",
   "#e8e8e8",
   "#828282",
   "#d4d4d4",
@@ -45,7 +45,7 @@ export const CompactDonut = memo(function CompactDonut({
 
   return (
     <div
-      className="card-ventriloc flex flex-col p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff682c]/30 cursor-pointer"
+      className="card-ventriloc flex flex-col p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#16a34a]/30 cursor-pointer"
       onClick={onClick}
       role="button"
       tabIndex={0}

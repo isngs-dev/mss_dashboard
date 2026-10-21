@@ -76,7 +76,7 @@ export function AppShell({
   };
 
   const brandOverride =
-    brandColor && brandColor !== "#ff682c"
+    brandColor && brandColor !== "#16a34a"
       ? `:root { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; } .dark { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; }`
       : null;
 

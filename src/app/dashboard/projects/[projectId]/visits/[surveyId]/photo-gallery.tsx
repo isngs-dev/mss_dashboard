@@ -36,7 +36,7 @@ export function PhotoGallery({ photos }: { photos: PhotoSlot[] }) {
               type="button"
               className={`relative rounded-lg overflow-hidden border transition-all flex flex-col items-center justify-center ${
                 hasUrl
-                  ? "border-border hover:border-[#ff682c]/50 hover:shadow-md cursor-pointer"
+                  ? "border-border hover:border-[#16a34a]/50 hover:shadow-md cursor-pointer"
                   : "border-dashed border-border/50 cursor-default"
               }`}
               onClick={() => {

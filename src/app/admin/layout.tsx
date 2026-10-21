@@ -22,7 +22,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     fetchPublicSetting(baseUrl, "site_title", "iSN"),
     fetchPublicSetting(baseUrl, "logo_text", "iSN"),
     fetchPublicSetting(baseUrl, "footer_text", "iSN Dashboard"),
-    fetchPublicSetting(baseUrl, "brand_color", "#ff682c"),
+    fetchPublicSetting(baseUrl, "brand_color", "#16a34a"),
   ]);
 
   return (
