@@ -7,6 +7,8 @@ migrations only layer on top of that base schema. So on every start this script:
 1. Applies the base schema (every statement is ``IF NOT EXISTS`` / ``ON CONFLICT`` — idempotent).
 2. If ``SEED_DEMO_DATA=true`` and the database has no tenants yet, seeds the demo tenants and
    demo login accounts (see CLAUDE.md / scripts/seed_*.py). It never re-seeds a populated DB.
+3. If ``DEMO_KEEP_PROJECTS_ACTIVE=true``, moves the end_date of already-ended projects to
+   today + 90 days so they appear under the dashboard's "All Active" filter (demo only).
 
 The API's own startup then applies the numbered migrations (services/api/main.py lifespan).
 
@@ -65,16 +67,39 @@ def seed_demo_data(database_url: str) -> None:
         )
 
 
+def keep_demo_projects_active(database_url: str, days_ahead: int = 90) -> None:
+    """Push already-ended projects' end_date to today + N days (demo convenience).
+
+    The seeded campaigns ended in April 2026, so the dashboard's "All Active" / "Current Month"
+    filters show nothing. This only moves end_date; start_date and visits are untouched.
+    """
+    import psycopg
+
+    with psycopg.connect(database_url) as conn:
+        cur = conn.execute(
+            "UPDATE dashboard.projects SET end_date = CURRENT_DATE + %s "
+            "WHERE end_date IS NOT NULL AND end_date < CURRENT_DATE",
+            (days_ahead,),
+        )
+    print(f"render_bootstrap: extended end_date on {cur.rowcount} project(s)", flush=True)
+
+
+def _flag(name: str) -> bool:
+    return os.environ.get(name, "").lower() in ("1", "true")
+
+
 def main() -> None:
     database_url = _database_url()
     apply_base_schema(database_url)
 
-    if os.environ.get("SEED_DEMO_DATA", "").lower() not in ("1", "true"):
-        return
-    if tenant_count(database_url) > 0:
-        print("render_bootstrap: tenants already present, skipping demo seed", flush=True)
-        return
-    seed_demo_data(database_url)
+    if _flag("SEED_DEMO_DATA"):
+        if tenant_count(database_url) > 0:
+            print("render_bootstrap: tenants already present, skipping demo seed", flush=True)
+        else:
+            seed_demo_data(database_url)
+
+    if _flag("DEMO_KEEP_PROJECTS_ACTIVE"):
+        keep_demo_projects_active(database_url)
 
 
 if __name__ == "__main__":
