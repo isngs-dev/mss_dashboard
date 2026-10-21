@@ -85,10 +85,16 @@ export const GeoHeatMap = memo(function GeoHeatMap({
     );
   }
 
+  const isTouchDevice =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
   return (
     <div className="relative h-full w-full">
       <MapContainer
         bounds={bounds}
+        // Touch screens: a one-finger drag on the map must scroll the page, not pan the map
+        // (pinch-zoom and the +/- buttons still work).
+        dragging={!isTouchDevice}
         scrollWheelZoom={true}
         zoomControl={true}
         style={{ height: "100%", width: "100%", borderRadius: "8px" }}

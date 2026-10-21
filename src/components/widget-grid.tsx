@@ -32,9 +32,38 @@ import { cn } from "@/lib/utils";
 
 const SIZE_CYCLE: WidgetSize[] = ["sm", "md", "lg", "xl"];
 
+// Responsive cell classes for the read-only grid. Tailwind needs these as literal strings (they
+// mirror WIDGET_SIZE_CLASS from dashboard-layout.ts for lg+, which stays the desktop source of truth).
+const MOBILE_SPAN_CLASS: Record<WidgetSize, string> = {
+  sm: "col-span-1 lg:col-span-3",
+  md: "col-span-2 lg:col-span-4",
+  lg: "col-span-2 lg:col-span-8",
+  xl: "col-span-2 lg:col-span-12",
+};
+const MOBILE_HEIGHT_BY_SIZE: Record<WidgetSize, string> = {
+  sm: "h-[112px]",
+  md: "h-[300px]",
+  lg: "h-[300px]",
+  xl: "h-[320px]",
+};
+// Widgets that need more room than their size preset gives them on a phone.
+const MOBILE_HEIGHT_BY_TYPE: Record<string, string> = {
+  "install-donuts": "h-[640px]",
+  "top-locations": "h-[260px]",
+  "geo-map": "h-[360px]",
+  "geo-ranked-cities": "h-[420px]",
+};
+
 function nextSize(size: WidgetSize): WidgetSize {
   const idx = SIZE_CYCLE.indexOf(size);
   return SIZE_CYCLE[(idx + 1) % SIZE_CYCLE.length];
+}
+
+// KPI tiles are short regardless of their desktop size preset (e.g. the Locations KPIs are "md").
+function mobileHeightClass(type: string, size: WidgetSize): string {
+  if (MOBILE_HEIGHT_BY_TYPE[type]) return MOBILE_HEIGHT_BY_TYPE[type];
+  if (type.includes("kpi")) return "h-[112px]";
+  return MOBILE_HEIGHT_BY_SIZE[size];
 }
 
 export function WidgetGrid({
@@ -53,24 +82,34 @@ export function WidgetGrid({
   gridTemplateRows?: string;
 }) {
   if (!editable || !onChangeLayout) {
-    // Byte-for-byte the 13a read-only render.
+    // Desktop (md+): the original fixed 12-col / 3-row dashboard shell, unchanged.
+    // Phones: a normal scrolling page — 2-col grid where KPI tiles sit two-up and charts take
+    // the full width at a fixed height (charts need a definite height to render).
     return (
       <div
-        className="grid h-full grid-cols-12 gap-2 overflow-hidden"
-        style={{ gridTemplateRows }}
+        className="grid grid-cols-2 gap-2 lg:h-full lg:grid-cols-12 lg:overflow-hidden lg:[grid-template-rows:var(--grid-rows)]"
+        style={{ ["--grid-rows" as string]: gridTemplateRows }}
       >
         {layout.widgets.map((widget) => {
           const def = WIDGET_REGISTRY[widget.type];
           if (!def) return null;
           const Component = def.component;
           return (
-            <Component
+            <div
               key={widget.id}
-              projectId={projectId}
-              data={data}
-              params={widget.params}
-              className={cn(WIDGET_SIZE_CLASS[widget.size])}
-            />
+              className={cn(
+                "min-h-0 lg:h-auto",
+                MOBILE_SPAN_CLASS[widget.size],
+                mobileHeightClass(widget.type, widget.size)
+              )}
+            >
+              <Component
+                projectId={projectId}
+                data={data}
+                params={widget.params}
+                className="h-full w-full"
+              />
+            </div>
           );
         })}
       </div>

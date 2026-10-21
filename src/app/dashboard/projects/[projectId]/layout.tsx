@@ -21,9 +21,9 @@ export default async function ProjectLayout({
   };
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
+    <div className="flex flex-col lg:h-full lg:overflow-hidden">
       <ProjectHeader project={serializedProject} role={session.user.role} />
-      <div className="flex-1 min-h-0 overflow-hidden">{children}</div>
+      <div className="lg:min-h-0 lg:flex-1 lg:overflow-hidden">{children}</div>
     </div>
   );
 }

@@ -65,7 +65,7 @@ export default async function VisitDetailPage({
   ];
 
   return (
-    <div className="flex h-full flex-col overflow-hidden gap-3">
+    <div className="flex flex-col gap-3 lg:h-full lg:overflow-hidden">
       {/* Top bar: back + survey ID + prev/next nav */}
       <div className="flex items-center justify-between shrink-0">
         <Link
@@ -83,26 +83,26 @@ export default async function VisitDetailPage({
             {prevVisit ? (
               <Link
                 href={`/dashboard/projects/${projectId}/visits/${prevVisit.surveyId}`}
-                className="rounded-md p-1 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:p-1"
                 title="Previous visit"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
               </Link>
             ) : (
-              <span className="rounded-md p-1 text-muted-foreground/30">
+              <span className="rounded-md p-2 text-muted-foreground/30 lg:p-1">
                 <ArrowLeft className="h-3.5 w-3.5" />
               </span>
             )}
             {nextVisit ? (
               <Link
                 href={`/dashboard/projects/${projectId}/visits/${nextVisit.surveyId}`}
-                className="rounded-md p-1 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:p-1"
                 title="Next visit"
               >
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             ) : (
-              <span className="rounded-md p-1 text-muted-foreground/30">
+              <span className="rounded-md p-2 text-muted-foreground/30 lg:p-1">
                 <ArrowRight className="h-3.5 w-3.5" />
               </span>
             )}
@@ -111,9 +111,9 @@ export default async function VisitDetailPage({
       </div>
 
       {/* Main content: Store panel (col 1-4) + Photo grid (col 5-12) */}
-      <div className="grid grid-cols-12 gap-3 flex-1 min-h-0 overflow-hidden">
+      <div className="flex flex-col gap-3 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-12 lg:overflow-hidden">
         {/* Store panel */}
-        <div className="col-span-4 flex flex-col gap-3 min-h-0 overflow-y-auto">
+        <div className="flex flex-col gap-3 lg:col-span-4 lg:min-h-0 lg:overflow-y-auto">
           <div className="card-ventriloc shrink-0">
             <CardHeader className="px-3 py-2.5 space-y-0">
               <CardTitle className="font-space-grotesk text-lg text-foreground" style={{ letterSpacing: "-0.02em" }}>
@@ -196,14 +196,14 @@ export default async function VisitDetailPage({
         </div>
 
         {/* Photo grid 5x2 */}
-        <div className="col-span-8 card-ventriloc flex flex-col min-h-0 p-3">
+        <div className="card-ventriloc flex flex-col p-3 lg:col-span-8 lg:min-h-0">
           <div className="flex items-center justify-between shrink-0 mb-2">
             <span className="text-sm font-medium text-foreground">Photo Evidence</span>
             <Badge variant={filledCount === 0 ? "destructive" : "secondary"} className="text-[10px]">
               {filledCount === 0 ? "No photos" : `${filledCount} / 10`}
             </Badge>
           </div>
-          <div className="flex-1 min-h-0">
+          <div className="lg:min-h-0 lg:flex-1">
             <PhotoGallery photos={photoSlots} />
           </div>
         </div>

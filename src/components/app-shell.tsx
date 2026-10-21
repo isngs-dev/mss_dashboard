@@ -175,7 +175,7 @@ export function AppShell({
           </div>
         </header>
 
-        <main className="h-[calc(100dvh-48px)] overflow-y-auto p-4 md:p-6">{children}</main>
+        <main className="h-[calc(100dvh-48px)] overflow-y-auto p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] md:p-6">{children}</main>
       </div>
     </div>
   );

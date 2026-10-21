@@ -92,7 +92,7 @@ export function OverviewGrid({
   if (!isAdmin) return renderGrid(renderedLayout);
 
   return (
-    <div className="flex h-full min-h-0 flex-col">
+    <div className="flex min-h-0 flex-col lg:h-full">
       <WidgetEditorToolbar
         editing={editing}
         saving={saving}
@@ -160,7 +160,7 @@ export function OverviewGrid({
         } : undefined}
         suggesting={suggesting}
       />
-      <div className="min-h-0 flex-1">
+      <div className="lg:min-h-0 lg:flex-1">
         {renderGrid(editing ? draft : renderedLayout, editing)}
       </div>
     </div>

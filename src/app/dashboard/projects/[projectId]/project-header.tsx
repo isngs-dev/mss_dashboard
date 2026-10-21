@@ -49,16 +49,17 @@ export function ProjectHeader({ project, role }: ProjectHeaderProps) {
   const hasWidgetGrid = isOverview; // true again once sprint 17 lands Geography (+ possibly Visits)
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 pb-3">
-      <div className="flex items-center gap-3 min-w-0">
+    <div className="flex flex-col gap-3 pb-3 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between">
+      {/* Phones: badge + dates on one line, the (wrapping) title below. md+: one row, as before. */}
+      <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
         <Badge variant="secondary" className="shrink-0">{project.clientName}</Badge>
         <h1
-          className="font-space-grotesk text-2xl font-normal text-foreground truncate"
+          className="order-last w-full break-words font-space-grotesk text-xl font-normal text-foreground lg:order-none lg:w-auto lg:truncate lg:text-2xl"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.1 }}
         >
           {project.name}
         </h1>
-        <span className="text-xs text-muted-foreground shrink-0 hidden md:inline">
+        <span className="text-xs text-muted-foreground shrink-0">
           {fmtDate(project.startDate)} — {fmtDate(project.endDate)}
         </span>
       </div>
@@ -68,6 +69,7 @@ export function ProjectHeader({ project, role }: ProjectHeaderProps) {
           <Button
             variant="outline"
             size="sm"
+            className="hidden lg:inline-flex"
             disabled={!hasWidgetGrid}
             title={hasWidgetGrid ? undefined : "Coming with widget-grid support"}
           >

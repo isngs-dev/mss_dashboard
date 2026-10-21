@@ -256,8 +256,8 @@ export function VisitsTable({
   return (
     <div className="space-y-4">
       {/* Filter bar */}
-      <div className="flex flex-wrap items-center gap-2">
-        <div className="relative min-w-[260px] flex-1">
+      <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:items-center">
+        <div className="relative col-span-2 lg:min-w-[260px] lg:flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={searchInput}
@@ -295,17 +295,75 @@ export function VisitsTable({
         <Button
           variant="ghost"
           size="sm"
-          className="rounded-pill text-muted-foreground hover:text-foreground"
+          className="col-span-2 rounded-pill text-muted-foreground hover:text-foreground lg:col-span-1"
           onClick={handleReset}
         >
           Reset
         </Button>
       </div>
 
-      {/* Table */}
+      {/* Phones: card list (a 7-column table would need sideways scrolling) */}
       <div
         className={cn(
-          "overflow-hidden rounded-lg border border-border bg-card",
+          "space-y-2 lg:hidden",
+          isPending && "opacity-50 pointer-events-none transition-opacity"
+        )}
+      >
+        <div className="flex items-center justify-between px-1">
+          <button
+            type="button"
+            onClick={() => handleSort("visit_date")}
+            className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+          >
+            Date
+            {currentSort === "visit_date" &&
+              (currentDir === "asc" ? <ArrowUp className="h-3 w-3" /> : <ArrowDown className="h-3 w-3" />)}
+          </button>
+        </div>
+        {items.length === 0 ? (
+          <div className="rounded-lg border border-border bg-card px-4 py-12 text-center text-sm text-muted-foreground">
+            No visits match the current filters.
+          </div>
+        ) : (
+          items.map((v) => (
+            <button
+              key={v.instance_id}
+              type="button"
+              onClick={() => router.push(`/dashboard/projects/${projectId}/visits/${v.instance_id}`)}
+              className="block w-full rounded-lg border border-border bg-card p-3 text-left transition-colors active:bg-muted"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="font-medium leading-snug text-foreground">{v.store_name}</div>
+                  <div className="mt-0.5 text-xs text-muted-foreground">
+                    {v.city || "—"} · {v.store_id}
+                  </div>
+                </div>
+                <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                  {formatDate(v.visit_date)}
+                </span>
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                {[v.install1, v.install2, v.install3].map((value, i) => (
+                  <div key={i} className="flex items-center gap-1">
+                    <span className="text-[10px] font-medium uppercase text-muted-foreground">I{i + 1}</span>
+                    {statusBadge(value)}
+                  </div>
+                ))}
+                <div className="ml-auto flex items-center gap-1 text-xs text-muted-foreground">
+                  <ImageIcon className="h-3.5 w-3.5" />
+                  <span className="tabular-nums">{v.photo_count}</span>
+                </div>
+              </div>
+            </button>
+          ))
+        )}
+      </div>
+
+      {/* Desktop table */}
+      <div
+        className={cn(
+          "hidden overflow-hidden rounded-lg border border-border bg-card lg:block",
           isPending && "opacity-50 pointer-events-none transition-opacity"
         )}
       >
@@ -357,7 +415,7 @@ export function VisitsTable({
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between text-xs text-muted-foreground">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
         <div className="flex items-center gap-3">
           <span>
             {totalCount.toLocaleString()} visit{totalCount === 1 ? "" : "s"}
@@ -441,7 +499,7 @@ function FilterSelect({
 }) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[160px] rounded-full border-border text-xs text-muted-foreground">
+      <SelectTrigger className="w-full rounded-full border-border text-xs text-muted-foreground lg:w-[160px]">
         <SelectValue placeholder={label}>
           {value === "__all__" ? label : value.length > 20 ? value.slice(0, 20) + "…" : value}
         </SelectValue>

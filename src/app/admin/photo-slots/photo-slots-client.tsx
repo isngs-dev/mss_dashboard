@@ -104,7 +104,7 @@ export function PhotoSlotsClient({
   };
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-8 md:p-8">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Photo Slot Labels</h1>

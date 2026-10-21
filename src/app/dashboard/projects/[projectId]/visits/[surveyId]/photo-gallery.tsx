@@ -26,7 +26,7 @@ export function PhotoGallery({ photos }: { photos: PhotoSlot[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-5 grid-rows-2 gap-2 h-full">
+      <div className="grid grid-cols-3 gap-2 lg:h-full lg:grid-cols-5 lg:grid-rows-2">
         {ALL_SLOTS.map((slot) => {
           const photo = photos.find((p) => p.kind === slot.kind);
           const hasUrl = !!photo?.url;
@@ -34,7 +34,7 @@ export function PhotoGallery({ photos }: { photos: PhotoSlot[] }) {
             <button
               key={slot.kind}
               type="button"
-              className={`relative rounded-lg overflow-hidden border transition-all flex flex-col items-center justify-center ${
+              className={`relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-lg border transition-all lg:aspect-auto ${
                 hasUrl
                   ? "border-border hover:border-[#16a34a]/50 hover:shadow-md cursor-pointer"
                   : "border-dashed border-border/50 cursor-default"
@@ -54,7 +54,7 @@ export function PhotoGallery({ photos }: { photos: PhotoSlot[] }) {
                     alt={slot.label}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 20vw, 15vw"
+                    sizes="(max-width: 768px) 33vw, 15vw"
                     unoptimized
                   />
                   <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent px-1.5 py-1">

@@ -60,7 +60,9 @@ export const TrendChart = memo(function TrendChart({
   // doesn't stretch edge-to-edge, tighten the horizontal margins slightly,
   // and thin out the X-axis tick density so data points aren't spread
   // unnaturally thin across the full card width.
-  const tickInterval = data.length > 20 ? Math.ceil(data.length / 12) : "preserveStartEnd";
+  // Let recharts drop ticks that would collide (minTickGap below) so the axis adapts to narrow
+  // phone widths as well as the wide desktop card.
+  const tickInterval = "preserveStartEnd" as const;
 
   return (
     <div className="relative h-full w-full min-h-0">
@@ -88,6 +90,7 @@ export const TrendChart = memo(function TrendChart({
               fontFamily="var(--font-inter)"
               tickFormatter={shortDate}
               interval={tickInterval}
+              minTickGap={28}
             />
             <YAxis
               stroke="hsl(var(--muted-foreground))"

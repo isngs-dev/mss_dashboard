@@ -88,7 +88,7 @@ export const DonutChart = memo(function DonutChart({
           {displayLabel}
         </div>
         <div
-          className="font-space-grotesk text-3xl text-foreground"
+          className="font-space-grotesk text-2xl text-foreground md:text-3xl"
           style={{ letterSpacing: "-0.04em", lineHeight: 1 }}
         >
           {displayValue}

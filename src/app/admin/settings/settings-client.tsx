@@ -110,7 +110,7 @@ export function SettingsClient({ settings, userRole }: SettingsClientProps) {
     userRole === "PLATFORM_ADMIN" || userRole === "CLIENT_ADMIN";
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-8 md:p-8">
       <div>
         <h1
           className="font-space-grotesk text-3xl font-normal tracking-tight text-foreground"

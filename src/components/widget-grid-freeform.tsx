@@ -25,8 +25,10 @@ export function WidgetGridFreeform({ layout, projectId, data, editable = false, 
     window.addEventListener("pointermove", move); window.addEventListener("pointerup", up);
     return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
   }, [layout, onChangeLayout, preview]);
-  return <div ref={ref} className="relative min-h-[240px]" style={{ display: "grid", gridTemplateColumns: `repeat(${layout.cols}, minmax(0, 1fr))`, gridAutoRows: "60px", gap: "0.5rem" }}>
-    {preview.widgets.map((widget) => { const def = WIDGET_REGISTRY[widget.type]; if (!def) return null; const Component = def.component; return <div key={widget.id} className="relative min-h-0" style={{ gridColumn: `${widget.x + 1} / span ${widget.w}`, gridRow: `${widget.y + 1} / span ${widget.h}` }}>
+  // Phones: a single stacked column in reading order (y, then x). md+: the explicit col/row placement.
+  const ordered = [...preview.widgets].sort((a, b) => a.y - b.y || a.x - b.x);
+  return <div ref={ref} className="relative grid grid-cols-1 gap-2 lg:min-h-[240px] lg:[grid-auto-rows:60px] lg:[grid-template-columns:var(--cols)]" style={{ ["--cols" as string]: `repeat(${layout.cols}, minmax(0, 1fr))` }}>
+    {ordered.map((widget) => { const def = WIDGET_REGISTRY[widget.type]; if (!def) return null; const Component = def.component; return <div key={widget.id} className="relative h-[var(--mh)] min-h-0 lg:h-auto lg:[grid-column:var(--gc)] lg:[grid-row:var(--gr)]" style={{ ["--gc" as string]: `${widget.x + 1} / span ${widget.w}`, ["--gr" as string]: `${widget.y + 1} / span ${widget.h}`, ["--mh" as string]: `${Math.max(widget.h * 60, 112)}px` }}>
       {editable && <><button type="button" aria-label={`Drag ${widget.id}`} className="absolute left-1 top-1 z-20 cursor-grab rounded bg-popover/90 p-1" onPointerDown={(event) => { event.preventDefault(); active.current = { id: widget.id, mode: "move", startX: event.clientX, startY: event.clientY, widget }; }}><GripVertical className="h-3.5 w-3.5" /></button><button type="button" aria-label={`Resize ${widget.id}`} className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize bg-[#16a34a]" onPointerDown={(event) => { event.preventDefault(); active.current = { id: widget.id, mode: "resize", startX: event.clientX, startY: event.clientY, widget }; }} /></>}
       <Component projectId={projectId} data={data} params={widget.params} className="h-full w-full" />
     </div>; })}

@@ -51,7 +51,7 @@ export function WidgetEditorToolbar({
 
   if (!editing) {
     return (
-      <div className="flex items-center justify-end pb-2">
+      <div className="hidden items-center justify-end pb-2 lg:flex">
         <Button variant="outline" size="sm" onClick={onStartEdit}>
           Edit dashboard
         </Button>

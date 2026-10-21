@@ -14,7 +14,7 @@ export function PillNav({ items }: { items: PillNavItem[] }) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-1 rounded-lg bg-muted/50 p-1">
+    <nav className="flex w-full items-center gap-1 rounded-lg bg-muted/50 p-1 lg:w-auto">
       {items.map((item) => {
         const active = item.exact
           ? pathname === item.href
@@ -24,7 +24,7 @@ export function PillNav({ items }: { items: PillNavItem[] }) {
             key={item.href}
             href={item.href}
             className={cn(
-              "rounded-md px-3 py-1 text-xs font-medium transition-colors",
+              "flex-1 rounded-md px-3 py-2 text-center text-xs font-medium transition-colors lg:flex-none lg:py-1",
               active
                 ? "bg-card text-foreground shadow-sm border-b-2 border-[#16a34a]"
                 : "text-muted-foreground hover:text-foreground hover:bg-card/50"

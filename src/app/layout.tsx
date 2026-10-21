@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { WebVitals } from "@/components/web-vitals";
 import "./globals.css";
@@ -17,6 +17,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "iSN Dashboard",
   description: "Retail execution analytics platform",
+};
+
+// Phones: fill the whole screen (notch/safe areas are handled in globals.css) and tint the
+// browser chrome to match the theme.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f6f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#101412" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
