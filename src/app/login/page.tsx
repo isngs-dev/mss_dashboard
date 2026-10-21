@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LoginForm } from "./login-form";
@@ -43,8 +44,7 @@ export default async function LoginPage({
   // explicitly enabled, so credentials are never shown on a real deployment.
   const showDemoCredentials = process.env.SHOW_DEMO_CREDENTIALS === "true";
 
-  const [logoText, footerText, brandColor] = await Promise.all([
-    fetchPublicSetting("logo_text", "iSN"),
+  const [footerText, brandColor] = await Promise.all([
     fetchPublicSetting("footer_text", "iSN Dashboard"),
     fetchPublicSetting("brand_color", "#16a34a"),
   ]);
@@ -63,11 +63,9 @@ export default async function LoginPage({
       {/* LEFT PANEL — map */}
       <div className="hidden flex-[1.35] flex-col px-12 pb-8 pt-10 md:flex">
         <div className="flex items-center gap-3.5">
-          <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand text-brand-foreground text-sm font-bold">
-            {logoText}
-          </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground">
-            {footerText}
+          {/* White chip so the navy logo stays readable on the dark theme too. */}
+          <span className="inline-flex items-center rounded-xl bg-white px-3 py-1.5 shadow-sm ring-1 ring-black/5">
+            <Image src="/logo.png" alt={footerText} width={250} height={96} priority className="h-9 w-auto" />
           </span>
         </div>
 
@@ -93,11 +91,8 @@ export default async function LoginPage({
       <div className="flex flex-1 items-center justify-center p-6 md:px-[72px]">
         <div className="w-full max-w-[540px] space-y-6">
           <div className="flex items-center justify-center gap-3 md:hidden">
-            <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-brand-foreground text-xs font-bold">
-              {logoText}
-            </div>
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              {footerText}
+            <span className="inline-flex items-center rounded-xl bg-white px-3 py-1.5 shadow-sm ring-1 ring-black/5">
+              <Image src="/logo.png" alt={footerText} width={250} height={96} priority className="h-8 w-auto" />
             </span>
           </div>
 
