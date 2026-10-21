@@ -1,0 +1,93 @@
+# Render Blueprint for the iSN Dashboard BACKEND (FastAPI API + Postgres + Redis).
+#
+# How to use: Render dashboard -> New -> Blueprint -> pick this repo. Render reads this file,
+# creates the three resources below and wires their connection strings together.
+#
+# The Next.js FRONTEND is NOT part of this file (it is deployed as its own web service already).
+# After this deploys, set these env vars on the frontend service and redeploy it:
+#   BACKEND_API_URL = https://<mss-api>.onrender.com     (the API's public URL)
+#   DATA_PROVIDER   = rest-api
+# and set CORS_ALLOWED_ORIGINS on mss-api to the frontend's URL (it is prompted for below).
+#
+# Free plans are fine for a demo, but note: the free web service sleeps after ~15 min idle
+# (first request then takes ~50 s) and the free Postgres is deleted after 30 days. For anything
+# longer-lived raise `plan` on the database and the web service (e.g. starter / basic-256mb).
+
+databases:
+  - name: mss-postgres
+    databaseName: shopmetrics_demo
+    user: mss_app
+    plan: free
+    postgresMajorVersion: "16"
+    ipAllowList: []            # private network only; the API connects via the internal URL
+
+services:
+  # Redis-compatible store: cache, rate limiter, JWT revocation (and Celery broker if enabled).
+  - type: keyvalue
+    name: mss-redis
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []            # private network only
+
+  - type: web
+    name: mss-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-backend.txt
+    # 1) scripts/render_bootstrap.py applies the base schema (and seeds demo data on an empty DB
+    #    when SEED_DEMO_DATA=true); 2) the API applies the numbered migrations on its own startup.
+    startCommand: python scripts/render_bootstrap.py && uvicorn services.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_ENV
+        value: production        # enforces strong JWT_SECRET / SECRET_ENCRYPTION_KEY at startup
+      - key: BACKEND_REPOSITORY
+        value: postgres
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mss-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: mss-redis
+          property: connectionString
+      # Distinct random secrets generated once by Render (never reuse one for the other).
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SECRET_ENCRYPTION_KEY
+        generateValue: true
+      # Render terminates TLS in a single proxy hop; the rate limiter keys on X-Forwarded-For.
+      - key: TRUSTED_PROXY_COUNT
+        value: "1"
+      # Frontend origin(s), comma-separated, e.g. https://mss-dashboard.onrender.com
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      # Seeds the 3 demo tenants + demo logins (admin@demo.local, client@demo.local, ...) once,
+      # only while the database has no tenants. Set to "false" (or delete) for a real deployment.
+      - key: SEED_DEMO_DATA
+        value: "true"
+      # Optional: enables the AI dashboard-layout suggestion feature. Leave blank to disable.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+
+  # --- Optional: Celery worker for scheduled Shopmetrics ingestion --------------------------
+  # Not needed for the seeded demo. Background workers have no free plan, so it is commented out.
+  # Uncomment, set a paid plan, and give it the same DATABASE_URL / REDIS_URL / secrets as mss-api.
+  #
+  # - type: worker
+  #   name: mss-worker
+  #   runtime: python
+  #   plan: starter
+  #   buildCommand: pip install -r requirements-backend.txt
+  #   startCommand: celery -A services.ingestion.celery_app worker --beat --loglevel=info
+  #   envVars:
+  #     - { key: PYTHON_VERSION, value: 3.12.10 }
+  #     - { key: APP_ENV, value: production }
+  #     - { key: BACKEND_REPOSITORY, value: postgres }
+  #     - { key: DATABASE_URL, fromDatabase: { name: mss-postgres, property: connectionString } }
+  #     - { key: REDIS_URL, fromService: { type: keyvalue, name: mss-redis, property: connectionString } }
+  #     - { key: JWT_SECRET, sync: false }
+  #     - { key: SECRET_ENCRYPTION_KEY, sync: false }

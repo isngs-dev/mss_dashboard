@@ -1,4 +1,7 @@
-fastapi>=0.115,<1
+# Capped below 0.122: fastapi 0.156 wraps routers in `_IncludedRouter`, which
+# prometheus-fastapi-instrumentator 5.11 cannot route (AttributeError -> 500 on every request).
+# 0.121.0 is the verified-good version.
+fastapi>=0.115,<0.122
 # Pin Starlette to 0.x: prometheus-fastapi-instrumentator 5.11 breaks on Starlette 1.x
 # routing (AttributeError: '_IncludedRouter' object has no attribute 'path'). fastapi<1
 # alone allowed Starlette 1.3 to be installed, which 500s every request.

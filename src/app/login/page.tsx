@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LoginForm } from "./login-form";
+import { DemoCredentials } from "./demo-credentials";
 import { DataPulseMap } from "./data-pulse";
 import { hexToHsl } from "@/lib/utils";
 
@@ -110,21 +111,7 @@ export default async function LoginPage({
           <LoginForm initialError={hasError ? "error" : hasServiceError ? "service_error" : undefined} callbackUrl={params.callbackUrl} />
 
           {showDemoCredentials && (
-            <div className="rounded-xl border border-dashed border-border bg-muted/30 p-4 text-sm">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Demo accounts
-              </p>
-              <dl className="space-y-3">
-                {DEMO_ACCOUNTS.map((a) => (
-                  <div key={a.email}>
-                    <dt className="font-medium text-foreground">{a.label}</dt>
-                    <dd className="font-mono text-muted-foreground">
-                      {a.email} <span className="px-1">/</span> {DEMO_PASSWORD}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+            <DemoCredentials accounts={DEMO_ACCOUNTS} password={DEMO_PASSWORD} />
           )}
         </div>
       </div>
