@@ -1,0 +1,3 @@
+# Render's Python runtime defaults to `pip install -r requirements.txt`; the backend's real
+# dependency list lives in requirements-backend.txt (the repo root is also a Next.js app).
+-r requirements-backend.txt
