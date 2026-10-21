@@ -33,7 +33,7 @@ export async function getPhotoSlotsData(): Promise<{
   const firstTenant = tenants[0];
 
   const response = await fetch(
-    `http://localhost:8010/admin/tenants/${firstTenant.id}/projects`,
+    `${process.env.BACKEND_API_URL ?? "http://localhost:8010"}/admin/tenants/${firstTenant.id}/projects`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ export async function getProjectsForTenant(tenantId: string) {
   }
 
   const response = await fetch(
-    `http://localhost:8010/admin/tenants/${tenantId}/projects`,
+    `${process.env.BACKEND_API_URL ?? "http://localhost:8010"}/admin/tenants/${tenantId}/projects`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

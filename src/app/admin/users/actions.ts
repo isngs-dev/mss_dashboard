@@ -43,7 +43,7 @@ export async function getProjectsForTenant(
   }
 
   const response = await fetch(
-    `http://localhost:8010/admin/tenants/${tenantId}/projects`,
+    `${process.env.BACKEND_API_URL ?? "http://localhost:8010"}/admin/tenants/${tenantId}/projects`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
