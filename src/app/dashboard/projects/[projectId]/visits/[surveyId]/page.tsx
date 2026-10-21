@@ -169,7 +169,7 @@ export default async function VisitDetailPage({
             <CardHeader className="px-3 py-2.5 space-y-0">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xs font-medium text-foreground flex items-center gap-1.5">
-                  <Camera className="h-3.5 w-3.5 text-[#16a34a]" />
+                  <Camera className="h-3.5 w-3.5 text-brand" />
                   Completeness
                 </CardTitle>
                 <span className="text-[10px] tabular-nums text-muted-foreground">{filledCount}/10</span>
@@ -181,7 +181,7 @@ export default async function VisitDetailPage({
                   <div
                     key={slot.kind}
                     className={`h-2.5 flex-1 rounded-full transition-colors ${
-                      slot.url ? "bg-[#16a34a]" : "bg-muted"
+                      slot.url ? "bg-brand" : "bg-muted"
                     }`}
                     title={`${slot.label}: ${slot.url ? "Has photo" : "Empty"}`}
                   />

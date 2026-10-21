@@ -140,7 +140,7 @@ export function DataPulseMap() {
 
       if (!reducedMotion) {
         ctx.lineWidth = 1;
-        ctx.strokeStyle = "rgba(22,163,74,0.22)";
+        ctx.strokeStyle = "rgba(59,95,214,0.22)";
         ctx.beginPath();
         for (const e of edges) {
           const A = projectedNodes[e[0]];
@@ -171,8 +171,8 @@ export function DataPulseMap() {
           const bx = A.x + (B.x - A.x) * bt;
           const by = A.y + (B.y - A.y) * bt;
           const grad = ctx.createLinearGradient(bx, by, x, y);
-          grad.addColorStop(0, "rgba(22,163,74,0)");
-          grad.addColorStop(1, "rgba(74,222,128,0.55)");
+          grad.addColorStop(0, "rgba(59,95,214,0)");
+          grad.addColorStop(1, "rgba(125,160,255,0.55)");
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.6;
           ctx.beginPath();
@@ -180,7 +180,7 @@ export function DataPulseMap() {
           ctx.lineTo(x, y);
           ctx.stroke();
           ctx.save();
-          ctx.shadowColor = "rgba(34,197,94,0.9)";
+          ctx.shadowColor = "rgba(80,120,240,0.9)";
           ctx.shadowBlur = 8;
           ctx.fillStyle = "#ffb184";
           ctx.beginPath();
@@ -193,21 +193,21 @@ export function DataPulseMap() {
           const n = projectedNodes[i];
           if (!n) continue;
           const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, 13);
-          g.addColorStop(0, "rgba(22,163,74,0.35)");
-          g.addColorStop(1, "rgba(22,163,74,0)");
+          g.addColorStop(0, "rgba(59,95,214,0.35)");
+          g.addColorStop(1, "rgba(59,95,214,0)");
           ctx.fillStyle = g;
           ctx.beginPath();
           ctx.arc(n.x, n.y, 13, 0, Math.PI * 2);
           ctx.fill();
 
           const phase = (t * 0.55 + i * 0.31) % 1;
-          ctx.strokeStyle = `rgba(22,163,74,${((1 - phase) * 0.5).toFixed(3)})`;
+          ctx.strokeStyle = `rgba(59,95,214,${((1 - phase) * 0.5).toFixed(3)})`;
           ctx.lineWidth = 1.4;
           ctx.beginPath();
           ctx.arc(n.x, n.y, 4 + phase * 13, 0, Math.PI * 2);
           ctx.stroke();
 
-          ctx.fillStyle = "#16a34a";
+          ctx.fillStyle = "#3b5fd6";
           ctx.beginPath();
           ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
           ctx.fill();
@@ -216,7 +216,7 @@ export function DataPulseMap() {
         for (let i = 0; i < projectedNodes.length; i++) {
           const n = projectedNodes[i];
           if (!n) continue;
-          ctx.fillStyle = "#16a34a";
+          ctx.fillStyle = "#3b5fd6";
           ctx.beginPath();
           ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
           ctx.fill();

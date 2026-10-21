@@ -46,11 +46,11 @@ export default async function LoginPage({
 
   const [footerText, brandColor] = await Promise.all([
     fetchPublicSetting("footer_text", "iSN Dashboard"),
-    fetchPublicSetting("brand_color", "#16a34a"),
+    fetchPublicSetting("brand_color", "#243c7c"),
   ]);
 
   const brandOverride =
-    brandColor !== "#16a34a"
+    brandColor !== "#243c7c"
       ? `:root { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; } .dark { --brand: ${hexToHsl(brandColor)}; --primary: ${hexToHsl(brandColor)}; }`
       : null;
 

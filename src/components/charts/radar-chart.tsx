@@ -21,7 +21,7 @@ const TOOLTIP_STYLE = {
 } as const;
 
 const BANNER_COLORS = [
-  "#16a34a", "#4a90d9", "#50c878", "#9b59b6", "#f39c12", "#1abc9c",
+  "hsl(var(--brand))", "#4a90d9", "#50c878", "#9b59b6", "#f39c12", "#1abc9c",
 ];
 
 export const BannerRadarChart = memo(function BannerRadarChart({

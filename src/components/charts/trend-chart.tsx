@@ -71,8 +71,8 @@ export const TrendChart = memo(function TrendChart({
           <AreaChart data={data} margin={{ top: 8, right: 16, left: -16, bottom: 0 }}>
             <defs>
               <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#16a34a" stopOpacity={0.18} />
-                <stop offset="95%" stopColor="#16a34a" stopOpacity={0} />
+                <stop offset="5%" stopColor="hsl(var(--brand))" stopOpacity={0.18} />
+                <stop offset="95%" stopColor="hsl(var(--brand))" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -109,11 +109,11 @@ export const TrendChart = memo(function TrendChart({
             <Area
               type="monotone"
               dataKey="count"
-              stroke="#16a34a"
+              stroke="hsl(var(--brand))"
               strokeWidth={2}
               fill="url(#trendGradient)"
               dot={false}
-              activeDot={{ r: 4, fill: "#16a34a", stroke: "hsl(var(--card))", strokeWidth: 2 }}
+              activeDot={{ r: 4, fill: "hsl(var(--brand))", stroke: "hsl(var(--card))", strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -145,8 +145,8 @@ export const CumulativeChart = memo(function CumulativeChart({
           <AreaChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
             <defs>
               <linearGradient id="cumulativeGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#16a34a" stopOpacity={0.15} />
-                <stop offset="95%" stopColor="#16a34a" stopOpacity={0} />
+                <stop offset="5%" stopColor="hsl(var(--brand))" stopOpacity={0.15} />
+                <stop offset="95%" stopColor="hsl(var(--brand))" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -197,11 +197,11 @@ export const CumulativeChart = memo(function CumulativeChart({
             <Area
               type="monotone"
               dataKey="cumulative"
-              stroke="#16a34a"
+              stroke="hsl(var(--brand))"
               strokeWidth={2}
               fill="url(#cumulativeGradient)"
               dot={false}
-              activeDot={{ r: 4, fill: "#16a34a", stroke: "hsl(var(--card))", strokeWidth: 2 }}
+              activeDot={{ r: 4, fill: "hsl(var(--brand))", stroke: "hsl(var(--card))", strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -266,7 +266,7 @@ export const LocationBarChart = memo(function LocationBarChart({
             contentStyle={TOOLTIP_STYLE}
             formatter={(value: number) => [value, "Visits"]}
           />
-          <Bar dataKey="count" fill="#16a34a" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="count" fill="hsl(var(--brand))" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

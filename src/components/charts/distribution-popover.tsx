@@ -9,7 +9,7 @@ import {
 import { Info } from "lucide-react";
 
 const COLORS = [
-  "#16a34a",
+  "hsl(var(--brand))",
   "#e8e8e8",
   "#828282",
   "#d4d4d4",

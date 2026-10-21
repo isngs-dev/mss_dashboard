@@ -131,7 +131,7 @@ export function WidgetGrid({
             key={widget.id}
             className={cn(WIDGET_SIZE_CLASS[widget.size], "group relative min-h-0")}
           >
-            <div className="pointer-events-none absolute inset-0 z-10 rounded-lg ring-1 ring-dashed ring-[#16a34a]/40 opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 z-10 rounded-lg ring-1 ring-dashed ring-brand/40 opacity-0 transition-opacity group-hover:opacity-100" />
             <div className="absolute right-1 top-1 z-20 flex items-center gap-0.5 rounded-md border border-border bg-popover/95 p-0.5 opacity-0 shadow-sm transition-opacity group-hover:opacity-100">
               <button
                 type="button"

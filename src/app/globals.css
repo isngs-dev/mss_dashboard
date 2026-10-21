@@ -5,33 +5,33 @@
 @layer base {
   :root {
     /* Swiss Executive — Fog canvas / Paper cards / Signal Green accent */
-    --background:          140 12% 96%;   /* Fog     #f5f5f5 */
-    --foreground:          150 15% 12%;   /* Carbon  #202020 */
+    --background:          220 20% 96%;   /* Fog     #f5f5f5 */
+    --foreground:          224 30% 12%;   /* Carbon  #202020 */
     --card:                0 0% 100%;  /* Paper   #ffffff */
-    --card-foreground:     150 15% 12%;
+    --card-foreground:     224 30% 12%;
     --popover:             0 0% 100%;
-    --popover-foreground:  150 15% 12%;
-    --primary:             142 76% 36%; /* Signal Green #16a34a */
+    --popover-foreground:  224 30% 12%;
+    --primary:             223 55% 31%; /* brand blue */
     --primary-foreground:  0 0% 100%;
-    --secondary:           140 12% 96%;   /* Fog     #f5f5f5 */
-    --secondary-foreground:150 8% 30%;   /* Graphite #4d4d4d */
-    --muted:               140 12% 96%;   /* Fog */
-    --muted-foreground:    150 5% 42%;   /* Slate   #828282 */
-    --accent:              140 12% 91%;   /* Chalk   #e8e8e8 */
-    --accent-foreground:   150 8% 30%;   /* Graphite */
+    --secondary:           220 20% 96%;   /* Fog     #f5f5f5 */
+    --secondary-foreground:224 15% 30%;   /* Graphite #4d4d4d */
+    --muted:               220 20% 96%;   /* Fog */
+    --muted-foreground:    222 8% 42%;   /* Slate   #828282 */
+    --accent:              220 20% 91%;   /* Chalk   #e8e8e8 */
+    --accent-foreground:   224 15% 30%;   /* Graphite */
     --destructive:         0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border:              140 10% 89%;   /* Chalk   #e8e8e8 */
-    --input:               140 10% 89%;
-    --ring:                142 76% 36%; /* Signal Green #16a34a */
+    --border:              220 15% 89%;   /* Chalk   #e8e8e8 */
+    --input:               220 15% 89%;
+    --ring:                223 55% 31%; /* brand blue */
     --radius:              0.5rem;      /* 8px cards */
-    --brand:               142 76% 36%; /* Signal Green #16a34a */
+    --brand:               223 55% 31%; /* brand blue */
     --brand-foreground:    0 0% 100%;
 
     /* Swiss Executive — new tokens */
-    --sidebar-bg:          140 15% 98%;   /* #fafafa */
-    --sidebar-hover:       140 12% 94%;   /* #f0f0f0 */
-    --sidebar-active:      142 76% 36% / 0.08; /* Signal Green at 8% */
+    --sidebar-bg:          220 25% 98%;   /* #fafafa */
+    --sidebar-hover:       220 20% 94%;   /* #f0f0f0 */
+    --sidebar-active:      223 55% 31% / 0.08; /* Signal Green at 8% */
     --success:             142 71% 45%; /* #22c55e */
     --success-foreground:  0 0% 100%;
     --warning:             38 92% 50%;  /* #f59e0b */
@@ -43,32 +43,32 @@
   }
 
   .dark {
-    --background:          150 12% 7%;    /* #121212 */
-    --foreground:          140 10% 91%;   /* #e8e8e8 Chalk */
-    --card:                150 10% 10%;   /* #1a1a1a */
-    --card-foreground:     140 10% 91%;
-    --popover:             150 10% 10%;
-    --popover-foreground:  140 10% 91%;
-    --primary:             142 70% 38%; /* #1fa84e green */
+    --background:          224 28% 8%;    /* #121212 */
+    --foreground:          220 15% 92%;   /* #e8e8e8 Chalk */
+    --card:                224 24% 11%;   /* #1a1a1a */
+    --card-foreground:     220 15% 92%;
+    --popover:             224 24% 11%;
+    --popover-foreground:  220 15% 92%;
+    --primary:             223 65% 55%; /* brand blue */
     --primary-foreground:  0 0% 100%;
-    --secondary:           150 10% 12%;   /* #1f1f1f */
-    --secondary-foreground:140 6% 63%;
-    --muted:               150 10% 12%;
-    --muted-foreground:    140 6% 63%;   /* #a0a0a0 */
-    --accent:              150 8% 18%;   /* #2d2d2d */
-    --accent-foreground:   140 6% 63%;
+    --secondary:           224 22% 13%;   /* #1f1f1f */
+    --secondary-foreground:220 10% 65%;
+    --muted:               224 22% 13%;
+    --muted-foreground:    220 10% 65%;   /* #a0a0a0 */
+    --accent:              224 20% 19%;   /* #2d2d2d */
+    --accent-foreground:   220 10% 65%;
     --destructive:         0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border:              150 8% 18%;   /* #2d2d2d */
-    --input:               150 8% 18%;
-    --ring:                142 70% 38%; /* green */
+    --border:              224 20% 19%;   /* #2d2d2d */
+    --input:               224 20% 19%;
+    --ring:                223 65% 55%; /* brand blue */
     --radius:              0.5rem;
-    --brand:               142 70% 38%;
+    --brand:               223 65% 55%;
     --brand-foreground:    0 0% 100%;
 
-    --sidebar-bg:          150 12% 9%;    /* #161616 */
-    --sidebar-hover:       150 10% 12%;   /* #1f1f1f */
-    --sidebar-active:      142 70% 38% / 0.12;
+    --sidebar-bg:          224 26% 10%;    /* #161616 */
+    --sidebar-hover:       224 22% 13%;   /* #1f1f1f */
+    --sidebar-active:      223 65% 55% / 0.14;
     --success:             142 69% 58%; /* #4ade80 */
     --success-foreground:  0 0% 7%;
     --warning:             45 93% 47%;  /* #fbbf24 */
@@ -153,11 +153,11 @@ body::before {
   z-index: -1;
   pointer-events: none;
   /* Blob A — Signal Green, top-left corner */
-  /* Blob B — teal-green tint, bottom-right corner */
+  /* Blob B — sky-blue tint, bottom-right corner */
   /* Blob C — cool soft slate, top-right area */
   background:
-    radial-gradient(ellipse 70% 55% at 0% 0%,   hsl(142 76% 36% / 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(160 60% 45% / 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 55% at 0% 0%,   hsl(223 55% 31% / 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(205 65% 48% / 0.06) 0%, transparent 70%),
     radial-gradient(ellipse 55% 50% at 95% 5%,   hsl(210 20% 70% / 0.05) 0%, transparent 65%);
   animation:
     aurora-drift-a 32s ease-in-out infinite alternate,
@@ -173,8 +173,8 @@ body::before {
 
 .dark body::before {
   background:
-    radial-gradient(ellipse 70% 55% at 0% 0%, hsl(142 70% 38% / 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(160 60% 45% / 0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 70% 55% at 0% 0%, hsl(223 65% 55% / 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 60% at 100% 100%, hsl(205 65% 48% / 0.03) 0%, transparent 70%);
   animation: none;
 }
 

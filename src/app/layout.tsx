@@ -25,10 +25,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#101412" },
-  ],
+  themeColor: "#f3f5f9", // light is the default theme
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -41,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
                   }
                 } catch(e) {}

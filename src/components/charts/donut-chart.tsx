@@ -3,9 +3,9 @@
 import { memo, useState, useCallback } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-// First segment = Signal Green (success), rest = neutral Ventriloc tones
+// First segment = Brand (success), rest = neutral Ventriloc tones
 const COLORS = [
-  "#16a34a", // Signal Green — success / primary
+  "hsl(var(--brand))", // Brand — success / primary
   "#e8e8e8", // Chalk
   "#828282", // Slate
   "#d4d4d4",

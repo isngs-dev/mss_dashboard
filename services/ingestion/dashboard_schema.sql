@@ -170,10 +170,10 @@ INSERT INTO dashboard.platform_settings (key, value)
 VALUES ('footer_text', 'iSN Dashboard')
 ON CONFLICT (key) DO NOTHING;
 INSERT INTO dashboard.platform_settings (key, value)
-VALUES ('brand_color', '#16a34a')
+VALUES ('brand_color', '#243c7c')
 ON CONFLICT (key) DO NOTHING;
 INSERT INTO dashboard.platform_settings (key, value)
-VALUES ('default_theme', 'system')
+VALUES ('default_theme', 'light')
 ON CONFLICT (key) DO NOTHING;
 INSERT INTO dashboard.platform_settings (key, value)
 VALUES ('date_format', 'MM/DD/YYYY')

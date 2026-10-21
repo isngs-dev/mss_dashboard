@@ -12,7 +12,6 @@ const config: Config = {
         inter: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
       },
       colors: {
-        "signal-green": "#16a34a",
         "sienna-bronze": "#816729",
         carbon:   "#202020",
         graphite: "#4d4d4d",

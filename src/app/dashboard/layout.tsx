@@ -26,7 +26,7 @@ export default async function DashboardLayout({
     fetchPublicSetting(baseUrl, "site_title", "iSN"),
     fetchPublicSetting(baseUrl, "logo_text", "iSN"),
     fetchPublicSetting(baseUrl, "footer_text", "iSN Dashboard"),
-    fetchPublicSetting(baseUrl, "brand_color", "#16a34a"),
+    fetchPublicSetting(baseUrl, "brand_color", "#243c7c"),
   ]);
 
   return (

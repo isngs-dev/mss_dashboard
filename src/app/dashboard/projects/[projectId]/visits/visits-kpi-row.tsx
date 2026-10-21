@@ -28,7 +28,7 @@ function VisitsKpiTile({
     <div className="card-ventriloc p-2 flex flex-col justify-between gap-0.5">
       <div className="flex items-center justify-between text-[9px] uppercase tracking-wide text-muted-foreground">
         <span>{label}</span>
-        <span className="text-signal-green">{icon}</span>
+        <span className="text-brand">{icon}</span>
       </div>
       <div
         className="font-space-grotesk text-xl text-foreground truncate tabular-nums"

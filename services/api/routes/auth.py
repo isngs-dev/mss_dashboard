@@ -156,7 +156,7 @@ async def get_public_setting(
     if key not in _PUBLIC_SETTING_KEYS:
         raise HTTPException(status_code=404, detail="Setting not found")
     method = getattr(repository, "get_platform_setting", None)
-    _defaults = {"site_title": "iSN", "logo_text": "iSN", "footer_text": "iSN Dashboard", "brand_color": "#16a34a"}
+    _defaults = {"site_title": "iSN", "logo_text": "iSN", "footer_text": "iSN Dashboard", "brand_color": "#243c7c"}
     if method is None:
         value = _defaults.get(key)
     else:

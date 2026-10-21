@@ -26,7 +26,7 @@ export function SidebarItem({
     "group flex w-full items-center gap-3 rounded-md py-2 text-sm font-medium transition-colors duration-150",
     collapsed ? "justify-center px-2" : "px-3",
     isActive
-      ? "border-l-[3px] border-signal-green bg-sidebar-active text-foreground"
+      ? "border-l-[3px] border-brand bg-sidebar-active text-foreground"
       : "border-l-[3px] border-transparent text-muted-foreground hover:bg-sidebar-hover hover:text-foreground"
   );
 
